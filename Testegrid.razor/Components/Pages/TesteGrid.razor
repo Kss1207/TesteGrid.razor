@@ -1,0 +1,28 @@
+﻿@page "/testegrid"
+@using MudBlazor
+
+<PageTitle>Teste do Grid</PageTitle>
+
+<MudDataGrid T="UsuarioTeste" Items="@usuarios" Hover="true" Dense="true">
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="ID" />
+        <PropertyColumn Property="x => x.Nome" Title="Nome" />
+        <PropertyColumn Property="x => x.Cpf" Title="CPF" />
+    </Columns>
+</MudDataGrid>
+
+@code {
+    public class UsuarioTeste
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; } = ""; // Inicializa para evitar erro de null
+        public string Cpf { get; set; } = "";  // Inicializa para evitar erro de null
+    }
+
+    private List<UsuarioTeste> usuarios = new()
+    {
+        new UsuarioTeste { Id = 1, Nome = "João Silva", Cpf = "111.111.111-11" },
+        new UsuarioTeste { Id = 2, Nome = "Maria Souza", Cpf = "222.222.222-22" },
+        new UsuarioTeste { Id = 3, Nome = "Carlos Almeida", Cpf = "333.333.333-33" }
+    };
+}
